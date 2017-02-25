@@ -36,7 +36,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(
                 "create table boards " +
-                        "(id integer primary key,name text, newsUrl text, option text, subject text, field text, date Date)"
+                        "(id integer primary key autoincrement ,name text, newsUrl text, option text, subject text, field text, date Date)"
         );
     }
 

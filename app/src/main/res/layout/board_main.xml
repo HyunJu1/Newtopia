@@ -6,8 +6,9 @@
 
     >
     <ScrollView
+        android:layout_alignParentTop="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="540dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:paddingTop="20dp">
@@ -113,8 +114,86 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:orientation="vertical">
+                <LinearLayout
+
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="26dp">
+                    <ImageView
+                        android:background="@color/colorPrimaryDark"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginRight="13dp"/>
+                    <TextView
+                        android:text="찬성측 주제"
+                        android:layout_marginRight="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                    <TextView
+                        android:background="@color/colorAccent"
+
+                        android:layout_marginRight="15dp"
+                        android:text="ㄱㄴㄷㄹㅁㅂㅅ"
+                        android:layout_width="240dp"
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="26dp">
+                    <ImageView
+                        android:background="@color/colorPrimaryDark"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginRight="13dp"/>
+                    <TextView
+                        android:text="반대측 주제"
+                        android:layout_marginRight="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                    <TextView
+                        android:background="@color/colorAccent"
+
+                        android:layout_marginRight="15dp"
+                        android:text="ㄱㄴㄷㄹㅁㅂㅅ"
+                        android:layout_width="240dp"
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:layout_alignTop="@+id/linearLayout">
+
+                    <ListView
+                        android:id="@+id/commentList"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"></ListView>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+
         </LinearLayout>
+
+
+
     </ScrollView>
+
+
+
 
     <LinearLayout
         android:layout_gravity="bottom"
@@ -122,20 +201,29 @@
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_height="32dp"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:id="@+id/linearLayout">
+
+
 
 
         <EditText
+            android:id="@+id/commentText"
             android:hint="입력하세요"
             android:background="@color/colorPrimaryDark"
+
             android:layout_width="320dp"
             android:layout_height="32dp"
             android:layout_weight="0.14" />
         <Button
+            android:id="@+id/commentButton"
             android:layout_gravity="right"
             android:layout_width="36dp"
             android:layout_height="32dp"
             android:background="@color/colorAccent"/>
 
     </LinearLayout>
+
+
+
 </RelativeLayout>
