@@ -1,8 +1,5 @@
 package com.example.msi.testshin;
 
-/**
- * Created by msi on 2017-02-25.
- */
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -15,18 +12,28 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 
+class CommentDBHelper {
 
+    public static final String DATABASE_NAME = "NewsBoard.db";
+    public static final String TABLE_NAME = "commentBoard";
+    public static final String COLUMN_ID = "id";
+    public static final String COLUMN_NAME = "name";
+    public static final String COLUMN_GOOD = "good";
+    public static final String COLUMN_FIELD = "field";
+    public static final String COLUMN_PROS = "pros";
+    public static final String COLUMN_DATE = "date";
+}
 public class DBHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "NewsBoard.db";
-    public static final String MOVIES_TABLE_NAME = "boards";
-    public static final String MOVIES_COLUMN_ID = "id";
-    public static final String MOVIES_COLUMN_NAME = "name";
-    public static final String MOVIES_COLUMN_NEWSURL = "newsUrl";
-    public static final String MOVIES_COLUMN_OPTION = "option";
-    public static final String MOVIES_COLUMN_SUBJECT = "subject";
-    public static final String MOVIES_COLUMN_FIELD = "field";
-    public static final String MOVIES_COLUMN_DATE = "date";
+    public static final String TABLE_NAME = "boards";
+    public static final String COLUMN_ID = "id";
+    public static final String COLUMN_NAME = "name";
+    public static final String COLUMN_NEWSURL = "newsUrl";
+    public static final String COLUMN_OPTION = "option";
+    public static final String COLUMN_SUBJECT = "subject";
+    public static final String COLUMN_FIELD = "field";
+    public static final String COLUMN_DATE = "date";
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -68,7 +75,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public int numberOfRows() {
         SQLiteDatabase db = this.getReadableDatabase();
-        int numRows = (int) DatabaseUtils.queryNumEntries(db, MOVIES_TABLE_NAME);
+        int numRows = (int) DatabaseUtils.queryNumEntries(db, TABLE_NAME);
         return numRows;
     }
 
@@ -100,10 +107,11 @@ public class DBHelper extends SQLiteOpenHelper {
         res.moveToFirst();
         while (res.isAfterLast() == false) {
             HashMap<String,String> h = new HashMap<String,String>();
-            h.put("option",res.getString(res.getColumnIndex(MOVIES_COLUMN_OPTION)));
-            h.put("subject",res.getString(res.getColumnIndex(MOVIES_COLUMN_SUBJECT)));
-            h.put("name",res.getString(res.getColumnIndex(MOVIES_COLUMN_NAME)));
-            h.put("date",res.getString(res.getColumnIndex(MOVIES_COLUMN_DATE)));
+            h.put("option",res.getString(res.getColumnIndex(COLUMN_OPTION)));
+            h.put("subject",res.getString(res.getColumnIndex(COLUMN_SUBJECT)));
+            h.put("name",res.getString(res.getColumnIndex(COLUMN_NAME)));
+            h.put("date",res.getString(res.getColumnIndex(COLUMN_DATE)));
+            h.put("id",res.getString(res.getColumnIndex(COLUMN_ID)));
             array_list.add(h);
             res.moveToNext();
         }

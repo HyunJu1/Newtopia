@@ -15,16 +15,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.msi.testshin.webView.GookminThinking;
+import com.example.msi.testshin.webView.Sinmoongo;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    DBHelper mydb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,8 +65,23 @@ public class MainActivity extends AppCompatActivity
         // 리스트뷰 참조 및 Adapter달기
         listview = (ListView) findViewById(R.id.listview1);
         listview.setAdapter(adapter);
+//----------------------------
 
-        // 첫 번째 아이템 추가.
+        mydb = new DBHelper(this);
+        ArrayList<HashMap<String,String>> array_list = mydb.getAllBoards();
+
+        int size = array_list.size();
+        for(int i=0; i<size; i++){
+            adapter.addItem(ContextCompat.getDrawable(this, R.drawable.ic_menu_camera),
+                    array_list.get(i).get("subject"), array_list.get(i).get("name"),  array_list.get(i).get("option"),array_list.get(i).get("date")) ;
+
+        }
+
+
+
+
+        //---------------------------------------------
+     /*   // 첫 번째 아이템 추가.
         adapter.addItem(ContextCompat.getDrawable(this, R.drawable.ic_menu_camera),
                 "토론1", "아이디", "토론자 수","날짜") ;
         // 두 번째 아이템 추가.
@@ -68,7 +89,7 @@ public class MainActivity extends AppCompatActivity
                 "토론1", "아이디", "토론자 수","날짜") ;
         // 세 번째 아이템 추가.
         adapter.addItem(ContextCompat.getDrawable(this, R.drawable.ic_menu_camera),
-                "토론1", "아이디", "토론자 수","날짜") ;
+                "토론1", "아이디", "토론자 수","날짜") ;*/
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -137,6 +158,22 @@ public class MainActivity extends AppCompatActivity
             }
         });
     }
+    private WebView webView;
+
+    private void onClickSinmoongo() {
+        final Intent intent = new Intent(this, Sinmoongo.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
+        finish();
+      }
+    private void onClickThinking() {
+        final Intent intent = new Intent(this, GookminThinking.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
+        finish();
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -170,6 +207,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_toron) {
             // Handle the camera action
+
         } else if (id == R.id.nav_alram) {
 
         } else if (id == R.id.nav_gongji) {
@@ -178,6 +216,12 @@ public class MainActivity extends AppCompatActivity
             onClickShare();
         } else if (id == R.id.nav_logout) {
             onClickLogout();
+        }
+        else if (id == R.id.nav_sinmoongo){
+            onClickSinmoongo();
+        }
+        else if(id == R.id.nav_thinking){
+            onClickThinking();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

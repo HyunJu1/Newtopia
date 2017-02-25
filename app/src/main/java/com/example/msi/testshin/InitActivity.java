@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.msi.testshin.login.KakaoSignupActivity;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
 import com.kakao.util.exception.KakaoException;
@@ -61,7 +62,7 @@ public class InitActivity extends  Info {
             Id = idText.getText().toString();
             Pass = passText.getText().toString();
             if (Id.equals(Cnum) && Pass.equals(Cpass)) {
-                Intent main = new Intent(getApplication(), MainActivity.class);
+                Intent main = new Intent(getApplication(), NewsBoard.class);
                 main.putExtra("splash", "splash");
                 startActivity(main);
                 Toast.makeText(getApplicationContext(), Cname + "님 환영합니다.",

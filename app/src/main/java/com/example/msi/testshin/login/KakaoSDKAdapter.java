@@ -1,4 +1,4 @@
-package com.example.msi.testshin;
+package com.example.msi.testshin.login;
 
 import android.app.Activity;
 import android.content.Context;

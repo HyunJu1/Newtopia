@@ -1,9 +1,11 @@
-package com.example.msi.testshin;
+package com.example.msi.testshin.login;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.msi.testshin.InitActivity;
+import com.example.msi.testshin.NewsBoard;
 import com.kakao.auth.ErrorCode;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
@@ -16,6 +18,7 @@ public class KakaoSignupActivity extends Activity{
      * Main으로 넘길지 가입 페이지를 그릴지 판단하기 위해 me를 호출한다.
      * @param savedInstanceState 기존 session 정보가 저장된 객체
      */
+public static String  kakaoNickname;
 
 @Override
 protected void onCreate(final Bundle savedInstanceState) {
@@ -52,7 +55,7 @@ protected void requestMe() {
         @Override
         public void onSuccess(UserProfile userProfile) {
             String kakaoID = String.valueOf(userProfile.getId()); // userProfile에서 ID값을 가져옴
-            String kakaoNickname = userProfile.getNickname();     // Nickname 값을 가져옴
+            kakaoNickname = userProfile.getNickname();     // Nickname 값을 가져옴
             Logger.d("UserProfile : " + userProfile);
             redirectMainActivity(); // 로그인 성공시 MainActivity로
         }
@@ -60,7 +63,7 @@ protected void requestMe() {
 }
 
 private void redirectMainActivity() {
-    startActivity(new Intent(this, MainActivity.class));
+    startActivity(new Intent(this, NewsBoard.class));
     finish();
 }
 protected void redirectLoginActivity() {

@@ -3,34 +3,34 @@ package com.example.msi.testshin;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import static com.example.msi.testshin.login.KakaoSignupActivity.kakaoNickname;
+
 /**
  * Created by msi on 2017-02-25.
  */
 
-public class NewsBoard extends AppCompatActivity  implements AdapterView.OnItemSelectedListener
+public class NewsBoard extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
     DBHelper dbh;
     EditText edit_newsUrl;
     Spinner optionSpinner;
     EditText edit_subject;
     EditText edit_field;
-    EditText edit_name;
     String option;
-    String[] items = { "월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일", };
+    String[] items = { "사회", "정치", "문화", "경제", "연예", "IT", "생활","방송","스포츠","자유방" };
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_board);
         edit_newsUrl = (EditText)findViewById(R.id.textUrl);
+        edit_subject = (EditText)findViewById(R.id.textSubject);
+        edit_field = (EditText)findViewById(R.id.textField);
         dbh = new DBHelper(this);
 
         optionSpinner = (Spinner) findViewById(R.id.spinner);
@@ -43,16 +43,20 @@ public class NewsBoard extends AppCompatActivity  implements AdapterView.OnItemS
         optionSpinner.setAdapter(aa);
 
     }
+
+
+
     public void onClickRegisterButton(View v){
         String newsUrl = edit_newsUrl.getText().toString() ;
         String subject = edit_subject.getText().toString();
         String field = edit_field.getText().toString();
-        String name = edit_name.getText().toString();
+        String name =  kakaoNickname  ;
+
 
         if (dbh.insertBoard(newsUrl,option,subject,field,name)){
-            Toast.makeText(getApplicationContext(), "insert Movie", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Insert Success", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(getApplicationContext(), "insert fail", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Insert Fail", Toast.LENGTH_SHORT).show();
         }
     }
     @Override
@@ -70,5 +74,4 @@ public class NewsBoard extends AppCompatActivity  implements AdapterView.OnItemS
     }
 
 }
-
 

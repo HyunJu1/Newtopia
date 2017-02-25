@@ -14,15 +14,23 @@
             android:id="@+id/nav_gongji"
 
             android:title="공지알림" />
+        <item
+            android:id="@+id/nav_gogek"
+
+            android:title="고객 센터 문의" />
 
     </group>
 
     <item android:title="">
         <menu>
             <item
-                android:id="@+id/nav_gogek"
+                android:id="@+id/nav_sinmoongo"
 
-                android:title="고객 센터 문의" />
+                android:title="신문고 정책참여" />
+            <item
+                android:id="@+id/nav_thinking"
+
+                android:title="국민생각함 바로가기" />
             <item
                 android:id="@+id/nav_logout"
 

@@ -1,4 +1,4 @@
-package com.example.msi.testshin;
+package com.example.msi.testshin.login;
 
 /**
  * Created by hh960 on 2017-02-25.
