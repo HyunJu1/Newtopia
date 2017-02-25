@@ -8,9 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.Toast;
 
-/**
- * Created by 박성균 on 2015-05-30.
- */
+
 public class Info extends ActionBarActivity {
     SQLiteDatabase database;
     CustomerDatabaseHelper databaseHelper;

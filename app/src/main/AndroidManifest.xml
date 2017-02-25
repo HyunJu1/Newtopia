@@ -31,6 +31,7 @@
         <activity android:name=".KakaoSignupActivity" />
         <activity android:name=".Member" />
         <activity android:name=".NewPage"></activity>
+        <activity android:name=".Info"/>
 
 
     </application>

@@ -18,7 +18,7 @@ public class Login extends Info{
     protected void onCreate(Bundle savedInstanceState) {
 
         if (getIntent().getExtras() == null) {
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, InitActivity.class));
         }
 
         super.onCreate(savedInstanceState);
